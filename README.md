@@ -1,2 +1,2 @@
-# cellular-automata
-An elementary cellular automaton generator
+# Elementary Cellular Automata Generator
+Documentation forthcoming.
