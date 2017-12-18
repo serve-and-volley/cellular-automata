@@ -31,10 +31,9 @@ div.inner {
 /* TOP BAR */
 div.topbar-outer {
     height: 130px;
-    background: rgba(223, 223, 223, 0.7);
-    /*background: #dfdfdf;*/
+    background: #dfdfdf;
     /*border-bottom: 1px solid #999999;*/
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 10px rgba(0,0,0,.4);
     position: fixed;
 }
 div.topbar-inner {
