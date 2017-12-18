@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cellular Automata</title>
+        <script src="jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="topbar-outer outer">
+            <div class="middle">
+                <div class="topbar-inner inner">
+
+                    <!-- TITLE CONTAINER -->
+                    <div class="title-container-outer outer">
+                        <div class="middle">
+                            <div class="title-container-inner inner">
+                                <p class="title-text"><a href="">Elementary Cellular Automaton Generator</a></p>
+                                <p class="subtext">by <a href="https://github.com/serve-and-volley" target="_blank">Kevin Lin</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RULE CONTAINER -->
+                    <div class="rule-container">
+                        <!-- RULE TITLE -->
+                        <div class="rule-title-outer outer">
+                            <div class="middle">
+                                <div class="rule-title-inner inner" id="rule-output">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- RULE NOTES -->
+                        <div class="rule-split">
+                            <!-- SPLIT TOP -->
+                            <div class="split-top-outer outer">
+                                <div class="middle">
+                                    <div class="rule-notes split-top-inner inner">
+                                        <div class="rule-notes-top-1">
+                                            <i>n</i>
+                                        </div>
+                                        <div class="rule-notes-top-2">
+                                            <i>n</i> + 1
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- SPLIT BOTTOM -->
+                            <div class="split-bottom-outer outer">
+                                <div class="middle">
+                                    <div class="split-bottom-inner inner rule-notes-bottom">
+                                        binary
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                        <!-- GENERATE AUTOMATON RULE -->
+                        <div id = "automaton-rule"></div>                                                
+                    </div> 
+
+                    <!-- CONTROL CONTAINER -->
+                    <div class="control-container-outer outer">
+                        <div class="middle">
+                            <div class="control-container-inner inner">
+
+                                <!-- RULE -->
+                                <div class="control-row">
+                                    <div class="control-row-cell-1">
+                                        Rule
+                                    </div>
+                                    <div class="control-row-cell-2">
+                                        <input class="text-input" type="text" id="rule-input" value="30">
+                                    </div>                           
+                                </div>
+                                <!-- STEPS -->
+                                <div class="control-row">
+                                    <div class="control-row-cell-1">
+                                        Steps
+                                    </div>
+                                    <div class="control-row-cell-2">
+                                        <input class="text-input" type="text" id="steps" value="60">
+                                    </div>                           
+                                </div>
+                                <!-- CELL SIZE -->
+                                <div class="control-row">
+                                    <div class="control-row-cell-1">
+                                        Cell size
+                                    </div>
+                                    <div class="control-row-cell-2">
+                                        <input class="text-input" type="text" id="cell-size" value="10">
+                                    </div>                           
+                                </div>
+                                <div class="control-row">
+                                    <input class="generate" type="button" value="Generate" onClick="ruleInput();" onsubmit="this.submit(); this.reset(); return false;">
+                                </div>                                
+                            </div>
+                        </div>
+                    </div> <!-- CONTROL CONTAINER -->
+
+                </div> <!-- INNER -->
+            </div> <!-- MIDDLE -->
+        </div> <!-- OUTER -->
+
+        <!-- INFO BOX -->
+        <div class="dummy-outer outer">
+            <div class="middle">
+                <div class="dummy-inner inner">
+                    <div class="info-box-outer outer">
+                        <div class="middle">
+                            <div class="info-box-inner inner">
+                                <div class="info-box-row">
+                                    <div class="info-box-row-cell-1">Total cells:</div>
+                                    <div class="info-box-row-cell-2" id="total-cell-count"></div>
+                                </div>
+                                <div class="info-box-row">
+                                    <div class="info-box-row-cell-1">Black cells:</div>
+                                    <div class="info-box-row-cell-2" id="black-cell-count"></div>
+                                    <div class="info-box-row-cell-3" id="black-cell-pct">(50%)</div>
+                                </div>
+                                <div class="info-box-row">
+                                    <div class="info-box-row-cell-1">White cells:</div>
+                                    <div class="info-box-row-cell-2" id="white-cell-count"></div>
+                                    <div class="info-box-row-cell-3" id="white-cell-pct"></div>
+                                </div>
+                                <div class="info-box-row">
+                                    <div class="info-box-row-cell-1">Runtime:</div>
+                                    <div class="info-box-row-cell-2" id="runtime"></div>
+                                </div>
+                                <div class="info-box-row">
+                                    <div class="info-box-row-cell-1">Cells/sec:</div>
+                                    <div class="info-box-row-cell-2" id="draw-rate"></div>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <canvas id="canvas" width="1200" height="600"></canvas>
+        <script src="cellularAutomata.js"></script>
+    </body>
+</html>
