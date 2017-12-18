@@ -1,4 +1,4 @@
-# Elementary Cellular Automata Generator
+# Elementary Cellular Automaton Generator
 
 This repo contains the code for generating [elementary cellular automata](https://en.wikipedia.org/wiki/Elementary_cellular_automaton). The usage of the generator is self-explanatory, especially when one is familiarized with [Stephen Wolfram's notations and definitions](https://en.wikipedia.org/wiki/Elementary_cellular_automaton).
 
