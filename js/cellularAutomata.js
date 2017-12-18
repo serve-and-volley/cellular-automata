@@ -282,11 +282,21 @@ function setAutomatonRule(thisRule) {
     document.getElementById('automaton-rule').innerHTML = automatonRuleHTML;
 }
 
-
+// Automaton rule patterns
 configurations = [[1,1,1], [1,1,0], [1,0,1], [1,0,0], [0,1,1], [0,1,0], [0,0,1], [0,0,0]];
+
 // Initial drawing
 var rule30 = [0, 0, 0, 1, 1, 1, 1, 0]; 
 var thisRule = rule30;
 setAutomatonRule(thisRule);
-drawCellularAutomata(60, 10, thisRule);
+
+var windowWidth = $(window).width();
+var cellSize = 10;
+var rows = Math.floor(windowWidth / (2*cellSize));
+
+document.getElementById('rule-input').value = 30;
+document.getElementById('steps').value = rows;
+document.getElementById('cell-size').value = cellSize;
+
+drawCellularAutomata(rows, cellSize, thisRule);
 setTitle('30');
