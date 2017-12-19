@@ -104,8 +104,17 @@ function drawCellularAutomata(rows, cellSize, rule) {
     M = rows;
     N = 2*M;
 
-    blackCellCount = 0;
-    whiteCellCount = 0;
+    var blackCellCount = 0;
+    var whiteCellCount = 0;
+
+    var patternCount1 = 0;
+    var patternCount2 = 0;
+    var patternCount3 = 0;
+    var patternCount4 = 0;
+    var patternCount5 = 0;
+    var patternCount6 = 0;
+    var patternCount7 = 0;
+    var patternCount8 = 0;
 
     // First row: Full
     row = []
@@ -134,14 +143,14 @@ function drawCellularAutomata(rows, cellSize, rule) {
         for (var j = 1; j < row.length - 1; j++) {
             new_row[0] = 0;
             new_row[N-1] = 0;
-            if (row[j-1] == 1 && row[j] == 1 && row[j+1] == 1) {new_row[j] = rule[0];}
-            else if (row[j-1] == 1 && row[j] == 1 && row[j+1] == 0) {new_row[j] = rule[1];}
-            else if (row[j-1] == 1 && row[j] == 0 && row[j+1] == 1) {new_row[j] = rule[2];}
-            else if (row[j-1] == 1 && row[j] == 0 && row[j+1] == 0) {new_row[j] = rule[3];}
-            else if (row[j-1] == 0 && row[j] == 1 && row[j+1] == 1) {new_row[j] = rule[4];}
-            else if (row[j-1] == 0 && row[j] == 1 && row[j+1] == 0) {new_row[j] = rule[5];}
-            else if (row[j-1] == 0 && row[j] == 0 && row[j+1] == 1) {new_row[j] = rule[6];}
-            else if (row[j-1] == 0 && row[j] == 0 && row[j+1] == 0) {new_row[j] = rule[7];}
+            if (row[j-1] == 1 && row[j] == 1 && row[j+1] == 1) {new_row[j] = rule[0]; patternCount1 += 1;}
+            else if (row[j-1] == 1 && row[j] == 1 && row[j+1] == 0) {new_row[j] = rule[1]; patternCount2 += 1;}
+            else if (row[j-1] == 1 && row[j] == 0 && row[j+1] == 1) {new_row[j] = rule[2]; patternCount3 += 1;}
+            else if (row[j-1] == 1 && row[j] == 0 && row[j+1] == 0) {new_row[j] = rule[3]; patternCount4 += 1;}
+            else if (row[j-1] == 0 && row[j] == 1 && row[j+1] == 1) {new_row[j] = rule[4]; patternCount5 += 1;}
+            else if (row[j-1] == 0 && row[j] == 1 && row[j+1] == 0) {new_row[j] = rule[5]; patternCount6 += 1;}
+            else if (row[j-1] == 0 && row[j] == 0 && row[j+1] == 1) {new_row[j] = rule[6]; patternCount7 += 1;}
+            else if (row[j-1] == 0 && row[j] == 0 && row[j+1] == 0) {new_row[j] = rule[7]; patternCount8 += 1;}
         }
         
         for (var j = 0; j < row.length; j++) {
@@ -167,6 +176,16 @@ function drawCellularAutomata(rows, cellSize, rule) {
         $('body, html').scrollLeft(scrollLength);
         $('body, html').scrollTop(0);
     });
+
+    // Rule counts
+    document.getElementById("count-value-1").innerHTML = '<div class="outer rule-count-outer"><div class="middle"><div class="inner rule-count-inner">' + formatNumber(patternCount1) + '</div></div></div>';
+    document.getElementById("count-value-2").innerHTML = '<div class="outer rule-count-outer"><div class="middle"><div class="inner rule-count-inner">' + formatNumber(patternCount2) + '</div></div></div>';
+    document.getElementById("count-value-3").innerHTML = '<div class="outer rule-count-outer"><div class="middle"><div class="inner rule-count-inner">' + formatNumber(patternCount3) + '</div></div></div>';
+    document.getElementById("count-value-4").innerHTML = '<div class="outer rule-count-outer"><div class="middle"><div class="inner rule-count-inner">' + formatNumber(patternCount4) + '</div></div></div>';
+    document.getElementById("count-value-5").innerHTML = '<div class="outer rule-count-outer"><div class="middle"><div class="inner rule-count-inner">' + formatNumber(patternCount5) + '</div></div></div>';
+    document.getElementById("count-value-6").innerHTML = '<div class="outer rule-count-outer"><div class="middle"><div class="inner rule-count-inner">' + formatNumber(patternCount6) + '</div></div></div>';
+    document.getElementById("count-value-7").innerHTML = '<div class="outer rule-count-outer"><div class="middle"><div class="inner rule-count-inner">' + formatNumber(patternCount7) + '</div></div></div>';
+    document.getElementById("count-value-8").innerHTML = '<div class="outer rule-count-outer"><div class="middle"><div class="inner rule-count-inner">' + formatNumber(patternCount8) + '</div></div></div>';
 
     // Infobox output
     var totalCellCount = blackCellCount + whiteCellCount;
@@ -270,11 +289,11 @@ function setAutomatonRule(thisRule) {
         var binaryValueHTML = '';
         if (thisRule[i] == 0) {
             newStateHTML = '<input type="image" src="icons/white_cell.svg" id="white" class="white-cell" onclick="toggle(this, ' + order + ');" />';
-            binaryValueHTML = '<div class="binary-white split-bottom-outer outer"><div class="middle"><div class="split-bottom-inner inner"><div id="toggle-' + order + '"><div class="binary" id="binary-value-' + order + '" >0</div></div></div>';
+            binaryValueHTML = '<div class="split-bottom-outer outer"><div class="middle"><div class="binary-white split-bottom-inner-1 inner"><div id="toggle-' + order + '"><div class="binary" id="binary-value-' + order + '" >0</div></div></div><div class="split-bottom-inner-2 inner"><div id="toggle-' + order + '"><div class="count" id="count-value-' + order + '" ></div></div></div>';
         }
         else if (thisRule[i] == 1) {
             newStateHTML = '<input type="image" src="icons/black_cell.svg" id="black" class="black-cell" onclick="toggle(this, ' + order + ');" />';
-            binaryValueHTML = '<div class="binary-black split-bottom-outer outer"><div class="middle"><div class="split-bottom-inner inner"><div id="toggle-' + order + '"><div class="binary" id="binary-value-' + order + '" >1</div></div></div>';
+            binaryValueHTML = '<div class="split-bottom-outer outer"><div class="middle"><div class="binary-black split-bottom-inner-1 inner"><div id="toggle-' + order + '"><div class="binary" id="binary-value-' + order + '" >1</div></div></div><div class="split-bottom-inner-2 inner"><div id="toggle-' + order + '"><div class="count" id="count-value-' + order + '" ></div></div></div>';
         }
         automatonRuleHTML += '<!-- RULES --><div class="rule-split"><!-- SPLIT TOP --><div class="split-top-outer outer"><div class="middle"><div class="split-top-inner inner"><div>' + currentPatternHTML + '</div><div><img class="cell" src="icons/empty_cell.svg" />' + newStateHTML + '<img class="cell" src="icons/empty_cell.svg" /></div></div></div></div><!-- SPLIT BOTTOM -->' + binaryValueHTML + '</div></div></div></div>';
 

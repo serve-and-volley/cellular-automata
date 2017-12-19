@@ -103,7 +103,7 @@ div.rule-split {
 }
 div.split-top-outer {
     width: inherit;
-    height: 65px;
+    height: 55px;
     border: 0px dotted #4d4d4d; /* For testing */
     color: #4d4d4d;      
 }
@@ -117,33 +117,83 @@ div.split-top-inner {
     margin-right: 2px;
 }
 div.split-bottom-outer {
+    float: left;
     width: inherit;
-    height: 44px;
+    height: 54px;
     border-top: 1px solid #4d4d4d;
-    color: #4d4d4d;      
+    color: #4d4d4d;  
 }
 div.binary-black {
     background: #000000;
     color: #ffffff;
-    border: 1px solid #4d4d4d;
+    border: 0px solid #4d4d4d;
 }
-div.split-bottom-inner {
-    width: 72px;   
-    height: 25px;
-    border: 0px dashed #4d4d4d; /* For testing */    
+div.split-bottom-inner-1 {
+    width: 82px;   
+    height: 27px;
+    border-bottom: 1px solid #4d4d4d;
     text-align: center;
     font-size: 1.3em; 
 }
+div.split-bottom-inner-2 {
+    width: 82px;   
+    height: 25px;
+    border: 0px solid #4d4d4d; /* For testing */
+    text-align: center;
+    font-size: 0.8em;
+}
+
+div.rule-count-outer {
+    width: 82px;
+    height: 25px;
+    border: 0px solid #4d4d4d; /* For testing */
+}
+div.rule-count-inner {
+    width: 82px;
+    height: 15px;
+    border: 0px solid #4d4d4d; /* For testing */
+}
+
 div.rule-notes {
     font-family: Times;
     text-align: center;
     font-size: 1.3em;
     height: 50px;
 }
-div.rule-notes-bottom {
+div.rule-notes-bottom-1 {
+    width: 82px;   
+    height: 27px;
+    border-bottom: 1px solid #4d4d4d;
+    text-align: center;
+    font-size: 1em;
+}
+div.rule-notes-bottom-2 {
     border: 0px dashed #4d4d4d; /* For testing */
-    font-size: 1.0em;
-    height: 20px;
+    font-size: 0.8em;
+    height: 25px;
+    text-align: center;
+}
+
+div.bottom-1-text-outer {
+    width: 82px;
+    height: 25px;
+    border: 0px solid #4d4d4d; /* For testing */
+}
+div.bottom-1-text-inner {
+    width: 82px;
+    height: 15px;
+    border: 0px solid #4d4d4d; /* For testing */
+}
+
+div.bottom-2-text-outer {
+    width: 82px;
+    height: 25px;
+    border: 0px solid #4d4d4d; /* For testing */
+}
+div.bottom-2-text-inner {
+    width: 82px;
+    height: 15px;
+    border: 0px solid #4d4d4d; /* For testing */
 }
 
 /* CONTROL CONTAINER */
