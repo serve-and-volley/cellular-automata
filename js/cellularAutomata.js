@@ -1,3 +1,21 @@
+$("#rule-input").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#generate").click();
+    }
+});
+
+$("#steps").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#generate").click();
+    }
+});
+
+$("#cell-size").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#generate").click();
+    }
+});
+
 function rule2decimal() {
     var rule = [
         parseInt(document.getElementById("binary-value-1").innerHTML),
