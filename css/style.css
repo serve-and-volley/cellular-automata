@@ -233,6 +233,7 @@ div.info-box-outer {
     color: #4d4d4d;
     font-family: Courier;
     font-size: 0.8em;
+    border-radius: 4px;
 }
 div.info-box-inner { 
     height: 75px;
