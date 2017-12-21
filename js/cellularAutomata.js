@@ -148,39 +148,29 @@ function drawCellularAutomata(rows, cellSize, rule) {
     // Subsequent rows
     for (var i = 1; i < M; i++) {
         new_row = [];
-        for (var j = 1; j < row.length - 1; j++) {
-            //new_row[0] = 0;
-            //new_row[N-1] = 0;
+        for (var j = 0; j < row.length; j++) {
 
-            // Left edge case (toroidal)
-            if (row[N-1] == 1 && row[0] == 1 && row[j+1] == 1) {new_row[0] = rule[0];}
-            else if (row[N-1] == 1 && row[0] == 1 && row[1] == 0) {new_row[0] = rule[1];}
-            else if (row[N-1] == 1 && row[0] == 0 && row[1] == 1) {new_row[0] = rule[2];}
-            else if (row[N-1] == 1 && row[0] == 0 && row[1] == 0) {new_row[0] = rule[3];}
-            else if (row[N-1] == 0 && row[0] == 1 && row[1] == 1) {new_row[0] = rule[4];}
-            else if (row[N-1] == 0 && row[0] == 1 && row[1] == 0) {new_row[0] = rule[5];}
-            else if (row[N-1] == 0 && row[0] == 0 && row[1] == 1) {new_row[0] = rule[6];}
-            else if (row[N-1] == 0 && row[0] == 0 && row[1] == 0) {new_row[0] = rule[7];}            
+            if (j == 0) {
+                var leftNeighborIndex = N-1;
+                var rightNeighborIndex = 1;
+            }
+            else if (j == N-1) {
+                var leftNeighborIndex = N-2;
+                var rightNeighborIndex = 0;
+            }
+            else {
+                var leftNeighborIndex = j-1;
+                var rightNeighborIndex = j+1;
+            }
 
-            // Right edge case (toroidal)
-            if (row[N-1] == 1 && row[N-1] == 1 && row[j+1] == 1) {new_row[N-1] = rule[0];}
-            else if (row[N-2] == 1 && row[N-1] == 1 && row[0] == 0) {new_row[N-1] = rule[1];}
-            else if (row[N-2] == 1 && row[N-1] == 0 && row[0] == 1) {new_row[N-1] = rule[2];}
-            else if (row[N-2] == 1 && row[N-1] == 0 && row[0] == 0) {new_row[N-1] = rule[3];}
-            else if (row[N-2] == 0 && row[N-1] == 1 && row[0] == 1) {new_row[N-1] = rule[4];}
-            else if (row[N-2] == 0 && row[N-1] == 1 && row[0] == 0) {new_row[N-1] = rule[5];}
-            else if (row[N-2] == 0 && row[N-1] == 0 && row[0] == 1) {new_row[N-1] = rule[6];}
-            else if (row[N-2] == 0 && row[N-1] == 0 && row[0] == 0) {new_row[N-1] = rule[7];}   
-            
-            // Middle cells
-            if (row[j-1] == 1 && row[j] == 1 && row[j+1] == 1) {new_row[j] = rule[0];}
-            else if (row[j-1] == 1 && row[j] == 1 && row[j+1] == 0) {new_row[j] = rule[1];}
-            else if (row[j-1] == 1 && row[j] == 0 && row[j+1] == 1) {new_row[j] = rule[2];}
-            else if (row[j-1] == 1 && row[j] == 0 && row[j+1] == 0) {new_row[j] = rule[3];}
-            else if (row[j-1] == 0 && row[j] == 1 && row[j+1] == 1) {new_row[j] = rule[4];}
-            else if (row[j-1] == 0 && row[j] == 1 && row[j+1] == 0) {new_row[j] = rule[5];}
-            else if (row[j-1] == 0 && row[j] == 0 && row[j+1] == 1) {new_row[j] = rule[6];}
-            else if (row[j-1] == 0 && row[j] == 0 && row[j+1] == 0) {new_row[j] = rule[7];}
+            if (row[leftNeighborIndex] == 1 && row[j] == 1 && row[rightNeighborIndex] == 1) {new_row[j] = rule[0];}
+            else if (row[leftNeighborIndex] == 1 && row[j] == 1 && row[rightNeighborIndex] == 0) {new_row[j] = rule[1];}
+            else if (row[leftNeighborIndex] == 1 && row[j] == 0 && row[rightNeighborIndex] == 1) {new_row[j] = rule[2];}
+            else if (row[leftNeighborIndex] == 1 && row[j] == 0 && row[rightNeighborIndex] == 0) {new_row[j] = rule[3];}
+            else if (row[leftNeighborIndex] == 0 && row[j] == 1 && row[rightNeighborIndex] == 1) {new_row[j] = rule[4];}
+            else if (row[leftNeighborIndex] == 0 && row[j] == 1 && row[rightNeighborIndex] == 0) {new_row[j] = rule[5];}
+            else if (row[leftNeighborIndex] == 0 && row[j] == 0 && row[rightNeighborIndex] == 1) {new_row[j] = rule[6];}
+            else if (row[leftNeighborIndex] == 0 && row[j] == 0 && row[rightNeighborIndex] == 0) {new_row[j] = rule[7];}
         }
         
         for (var j = 0; j < row.length; j++) {
