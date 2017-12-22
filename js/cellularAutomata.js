@@ -115,6 +115,17 @@ function resizeCanvas(rows, cellSize){
     canvas.width = 2*rows*cellSize;
 }
 
+function drawCell(i, j, binary, cellSize) {
+    if (binary == 0) {
+        whiteCell(i, j, cellSize);
+        whiteCellCount += 1;
+    }
+    else if (binary == 1) {
+        blackCell(i, j, cellSize);
+        blackCellCount += 1;
+    }            
+}
+
 function drawCellularAutomata(rows, cellSize, rule) {
     var startTime = Date.now() / 1000;
     resizeCanvas(rows, cellSize);
@@ -163,16 +174,17 @@ function drawCellularAutomata(rows, cellSize, rule) {
                 var rightNeighborIndex = j+1;
             }
 
-            if (row[leftNeighborIndex] == 1 && row[j] == 1 && row[rightNeighborIndex] == 1) {new_row[j] = rule[0];}
-            else if (row[leftNeighborIndex] == 1 && row[j] == 1 && row[rightNeighborIndex] == 0) {new_row[j] = rule[1];}
-            else if (row[leftNeighborIndex] == 1 && row[j] == 0 && row[rightNeighborIndex] == 1) {new_row[j] = rule[2];}
-            else if (row[leftNeighborIndex] == 1 && row[j] == 0 && row[rightNeighborIndex] == 0) {new_row[j] = rule[3];}
-            else if (row[leftNeighborIndex] == 0 && row[j] == 1 && row[rightNeighborIndex] == 1) {new_row[j] = rule[4];}
-            else if (row[leftNeighborIndex] == 0 && row[j] == 1 && row[rightNeighborIndex] == 0) {new_row[j] = rule[5];}
-            else if (row[leftNeighborIndex] == 0 && row[j] == 0 && row[rightNeighborIndex] == 1) {new_row[j] = rule[6];}
-            else if (row[leftNeighborIndex] == 0 && row[j] == 0 && row[rightNeighborIndex] == 0) {new_row[j] = rule[7];}
+            if (row[leftNeighborIndex] == 1 && row[j] == 1 && row[rightNeighborIndex] == 1) {new_row[j] = rule[0]; drawCell(i, j, new_row[j], cellSize);}
+            else if (row[leftNeighborIndex] == 1 && row[j] == 1 && row[rightNeighborIndex] == 0) {new_row[j] = rule[1]; drawCell(i, j, new_row[j], cellSize);}
+            else if (row[leftNeighborIndex] == 1 && row[j] == 0 && row[rightNeighborIndex] == 1) {new_row[j] = rule[2]; drawCell(i, j, new_row[j], cellSize);}
+            else if (row[leftNeighborIndex] == 1 && row[j] == 0 && row[rightNeighborIndex] == 0) {new_row[j] = rule[3]; drawCell(i, j, new_row[j], cellSize);}
+            else if (row[leftNeighborIndex] == 0 && row[j] == 1 && row[rightNeighborIndex] == 1) {new_row[j] = rule[4]; drawCell(i, j, new_row[j], cellSize);}
+            else if (row[leftNeighborIndex] == 0 && row[j] == 1 && row[rightNeighborIndex] == 0) {new_row[j] = rule[5]; drawCell(i, j, new_row[j], cellSize);}
+            else if (row[leftNeighborIndex] == 0 && row[j] == 0 && row[rightNeighborIndex] == 1) {new_row[j] = rule[6]; drawCell(i, j, new_row[j], cellSize);}
+            else if (row[leftNeighborIndex] == 0 && row[j] == 0 && row[rightNeighborIndex] == 0) {new_row[j] = rule[7]; drawCell(i, j, new_row[j], cellSize);}
         }
-        
+
+        /*
         for (var j = 0; j < row.length; j++) {
             if (new_row[j] == 0) {
                 whiteCell(i, j, cellSize);
@@ -182,7 +194,8 @@ function drawCellularAutomata(rows, cellSize, rule) {
                 blackCell(i, j, cellSize);
                 blackCellCount += 1;
             }
-        }        
+        } 
+        */      
 
         row = new_row;
     }
